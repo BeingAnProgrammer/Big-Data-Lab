@@ -1,0 +1,20 @@
+6.AGGREGATION AND INDEXING
+
+
+Aim : to implement indexing and aggregation commands in mongo db
+
+
+Procedure : 
+1.create under()method
+Syntax: db.COLLECTION_NAME.create index({key:1})
+Query : db.mycol.create index({“title”: ”des”: 1})
+2. dropindex() method
+Syntax : Db.COLLECTION_NAME.dropindex({key1})
+Query : Db.mycol_drop index ({“title” : 1})
+3.get index() method
+Syntax : Db.COLLECTION_NAME.get index()
+Query : Db.mycol.get index()
+4.aggregate() method:
+db
+Syntax  : Db.COLLECTION_NAME.aggregate
+Query : Db.mycol.aggregate((8 group: {-id: “$by uses”num_tutorial{$sum : 1}}}])
