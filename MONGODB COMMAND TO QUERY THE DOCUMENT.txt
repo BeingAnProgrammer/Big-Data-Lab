@@ -1,0 +1,63 @@
+4.MONGODB COMMAND TO QUERY THE DOCUMENT
+
+Find() method - To  Query data fom Mongodb collection we need to use mongodb find() method
+Example:db.student.find()
+O/p
+[
+  { _id: ObjectId("643eab339d855c7558a14417"), Name: 'Jack' },
+  {
+    _id: ObjectId("643ead539d855c7558a14418"),
+    Firstname: 'Jack',
+    Lastname: 'Jin',
+    Reg: '4012008'
+  },
+  {
+    _id: ObjectId("643ead539d855c7558a14419"),
+    Firstname: 'Sharma',
+    Lastname: 'gill'
+  }]
+Pretty() -  to display the results in a formatted way to use pretty() meythod.
+Example > db.student.find().pretty()
+O/p
+[
+  { _id: ObjectId("643eab339d855c7558a14417"), Name: 'Jack' },
+  {
+    _id: ObjectId("643ead539d855c7558a14418"),
+    Firstname: 'Jack',
+    Lastname: 'Jin',
+    Reg: '4012008'
+  },
+  {
+    _id: ObjectId("643ead539d855c7558a14419"),
+    Firstname: 'Sharma',
+    Lastname: 'gill'
+  }
+]
+Findone() method:
+Returns only one method
+Example:db.student.findone{Firstname:”jack”})
+4.AND
+Query: db.student.find({$and:[{“by”:”Hello”},{“title”:”MongoDB Overview”}]}).Pretty()
+Example:db.student.find({$and:[{“by”:”Hello”},{“title”:”MongoDB Overview”}]}).Pretty()
+                 {
+                     “_id”:ObjectId(“5dd4e2cc0821d344”),
+                      “title”:”MongoDB Overview”,
+                       “description”:”NoSQL Database”,
+                       “by”:”Hello”,
+                       “tags”:[
+                                      “mongodb”,
+                                     “database”,
+                                ]
+                        “likes”:100
+                 }
+5.OR
+Query: db.student.find({$or:[{“by”:”Hello”},{“title”:”MongoDB Overview”}]}).Pretty()
+Example: db.student.find({$or:[{“by”:”Hello”},{“title”:”MongoDB Overview”}]}).Pretty()
+
+6.AND and OR together
+Example: db.student.find({“likes”.{$gt:10},$or:[{“by”:”Hello”},
+                {“title”:”MongoDB Overview”}]}.Pretty()
+7.NOR
+Example: db.empDetails.find({$nor:[{first_name:”Radhika”},{last_name:”christoper”}]}).Pretty()
+8.NOT
+Example: db.empDetails.find({“Age”:{$not:{$not:{$gt:25}}}).Pretty()
