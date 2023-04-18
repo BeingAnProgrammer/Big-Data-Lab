@@ -1,0 +1,23 @@
+3.INSERTION AND UPDATION OF DOCS AND COLLECTION
+
+Insert many
+student> db.student.insertMany([{Firstname:"Jack",Lastname:"Son",Reg:"4012008"},{Firstname:"Sharma",Lastname:"gill"}])
+
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("643ead539d855c7558a14418"),
+    '1': ObjectId("643ead539d855c7558a14419")
+  }
+}
+
+Update many
+student> db.student.updateMany({Firstname: "Jack"}, {$set:{Lastname: "Jin"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+student>
