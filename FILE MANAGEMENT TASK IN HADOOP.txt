@@ -1,0 +1,45 @@
+7.FILE MANAGEMENT TASK IN HADOOP
+
+
+AIM: To execeite file management Commands Hadoop
+Procedure: -
+- Various HaDoop Commands -aSk
+in Hadoop
+1)	Create a directory ni HDfs at the given path – 
+Syntax : Hadoop fs – mkdir/Path |directory name . 
+Example: hadoop f s - mkdir/new Dataflair
+2 List the content of the directory-
+Syntax: hadoop fs – ls/Path
+Example: Hadoop fs  ls/Path
+fs. -Is | newpalaflair.
+3  Upload and Download a file in HDFS.
+Upload syntax: hadoop fs - Put<Local src> (destination) 
+Example : hadoop fs - Put /home/ file.txt/uses input
+Download syntax: hadoop fs -get<src> (local destinations )
+Example: hadoop fs - get /user /output-// home /Hadoop-tp/
+4.Set theContent of a file
+syntax: hadoop fs - Cat /Path
+Example: hadoop fs - cat/user / output /outfile
+5. Copy a file from sousce to destination – 
+syntax: hadoop fs -cp<src> <destinations> 
+Example: hadoop fs - cp /grekst geeks -copied a file
+6. Copy from local  To local file system to HDFS. 
+syntax : hadoop fs - copyfromlocal <locar src> <hadoop destinations>
+Example: hadoopfs -copy fomLocal/Desktop /uses .txt /geeKs 
+S y n t a x :Hadoop fs -copyTolocal <Hadoop src> <local destinations>
+Example: Hadoop fs – CopyTolocal/geeks /DesKtop /Helo
+7) Move file from Source to destination: - mv <Source> <destinations
+syntax : Hadoop fs mv <Source> <destinations>
+Example: hadoop fs –mv geeks /myfill. txt/geeks. copied
+8.> Remove a file of directory in HoFs -
+Syntax: Hadoop fs- rm<files
+Example: Hadoop fs -rm -r /user/test /sample. txt
+9.) Move From local to HDFS/to local from HDFS 
+syntax:hadoop fs –movefromlocalK<src><dest>
+Example: hadoop fs move fromlocal.../Desktop/Cet.txt-/geeks.
+syntax: hadwop fs move tolocal <Sre> < local dest> 
+10. Display last few lines of a file -
+fs -tail
+syntax: Hadoop -f<files>
+Exampie: hadoop fs –tail/in/appendfile
+
