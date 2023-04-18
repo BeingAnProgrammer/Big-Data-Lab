@@ -1,0 +1,21 @@
+5.LIMITING RECORD AND SORTING
+
+
+Limit() method
+Query: db.mycol.find({“title”:1,_id:0}).limit(2)
+Example: db.mycol.find({“title”:1,_id:0}).limit(2)
+	{“title”: “Mongodb Overview”}
+	{“title”: “NoSQL Overview”}
+
+
+Skip() method
+Query: db.mycol.find({“title”:1,_id:0}) .limit(1).skip(1)
+Example: db.mycol.find({“title”:1,_id:0}).limit().skip(1)
+	{“title”: “Mongodb Overview”}
+Sort() method
+
+
+Query: db.mycol.find({“title”:1,_id:0}).sort({title:-1})
+Example: db.mycol.find().sort({key:1})
+	{“title”: “Mongodb Overview”}
+	{“title”: “Mongodb page”}
