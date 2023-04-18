@@ -1,0 +1,34 @@
+2. CREATION OF DB COLLECTION AND DISPLAY
+
+AIM : - To Create a database Collection and display listof database and collection.
+ Procedure
+Create database : MongoDB USe DATABASE_NAME is used to create database. The Command will Create a new database if it doesnt exist. otherwise it will retesn the existing
+data base
+• Syntax: Use DATABASE _NAME
+• Examble: > use Student
+Switched to db Student
+ii) To Create Collections:: MongoDB db. createCollection (namer options)
+isused to Create collection.In the command, name is the name of Collection to be created. Options is a document and is used to specify configuration of collection
+• Syntax: db. CreateCollection (name. options)
+• Example: db. CreateCollection (" mycollection")
+iii) To display the list of datas : It use want to check our databases list. use the Command.
+Show db S
+• syntar: Show dbs
+
+test> use student
+
+switched to db student
+student> db.createCollection ("My Collection")
+{ ok: 1 }
+
+student> show dbs
+
+admin     40.00 KiB
+config   108.00 KiB
+local     72.00 KiB
+student    8.00 KiB
+
+student> show collections
+
+My Collection
+student>
