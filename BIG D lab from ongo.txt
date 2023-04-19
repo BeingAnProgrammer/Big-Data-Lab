@@ -1,0 +1,376 @@
+Microsoft Windows [Version 10.0.22621.1555]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Vaibhav>mongosh
+Current Mongosh Log ID: 643d004fb39ead5373e7f325
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0
+Using MongoDB:          6.0.5
+Using Mongosh:          1.8.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-04-17T13:35:55.774+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+test> show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+test> create sagardb
+Uncaught:
+SyntaxError: Missing semicolon. (1:6)
+
+> 1 | create sagardb
+    |       ^
+  2 |
+
+test> use sagardb
+switched to db sagardb
+sagardb> show collections
+
+sagardb> use collection mycol
+switched to db collection
+collection> show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+collection> exit
+
+C:\Users\Vaibhav>mongosh
+Current Mongosh Log ID: 643d0105e8660385425ee3a1
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0
+Using MongoDB:          6.0.5
+Using Mongosh:          1.8.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-04-17T13:35:55.774+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+test> show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+test> use mydb
+switched to db mydb
+mydb> db.createCollection("mycol")
+{ ok: 1 }
+mydb> db.mycol.insertOne({'name':'skumar','age':34})
+{
+  acknowledged: true,
+  insertedId: ObjectId("643d01546c22d015e16ffe59")
+}
+mydb> db.insertMany([{'name':'krips','age':18},{'name':'Vaibhav','age':'c'}])
+TypeError: db.insertMany is not a function
+mydb> db.insert([{'name':'krips','age':18},{'name':'Vaibhav','age':'c'}])
+TypeError: db.insert is not a function
+mydb> db.mycol.insertMany([{'name':'krips','age':18},{'name':'Vaibhav','age':'c'}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("643d01c76c22d015e16ffe5a"),
+    '1': ObjectId("643d01c76c22d015e16ffe5b")
+  }
+}
+mydb> db.mycol.find()
+[
+  {
+    _id: ObjectId("643d01546c22d015e16ffe59"),
+    name: 'skumar',
+    age: 34
+  },
+  { _id: ObjectId("643d01c76c22d015e16ffe5a"), name: 'krips', age: 18 },
+  {
+    _id: ObjectId("643d01c76c22d015e16ffe5b"),
+    name: 'Vaibhav',
+    age: 'c'
+  }
+]
+mydb> db.mycol.find().pretty()
+[
+  {
+    _id: ObjectId("643d01546c22d015e16ffe59"),
+    name: 'skumar',
+    age: 34
+  },
+  { _id: ObjectId("643d01c76c22d015e16ffe5a"), name: 'krips', age: 18 },
+  {
+    _id: ObjectId("643d01c76c22d015e16ffe5b"),
+    name: 'Vaibhav',
+    age: 'c'
+  }
+]
+mydb> db.mycol.find({'name':'skumar'})
+[
+  {
+    _id: ObjectId("643d01546c22d015e16ffe59"),
+    name: 'skumar',
+    age: 34
+  }
+]
+mydb> db.mycol.findMany({'name':'skumar'})
+TypeError: db.mycol.findMany is not a function
+mydb> db.mycol.findOne({'name':'skumar'})
+{ _id: ObjectId("643d01546c22d015e16ffe59"), name: 'skumar', age: 34 }
+mydb> db.mycol.find({'age':{$gt:2}})
+[
+  {
+    _id: ObjectId("643d01546c22d015e16ffe59"),
+    name: 'skumar',
+    age: 34
+  },
+  { _id: ObjectId("643d01c76c22d015e16ffe5a"), name: 'krips', age: 18 }
+]
+mydb> db.mycol.find({'age':{$eq:2}})
+
+mydb> db.mycol.find({'age':{$eq:'c'}})
+[
+  {
+    _id: ObjectId("643d01c76c22d015e16ffe5b"),
+    name: 'Vaibhav',
+    age: 'c'
+  }
+]
+mydb> db.mycol.find({'age':{$gt:'c'}})
+
+mydb> db.mycol.find({'age':{$gt:'b'}})
+[
+  {
+    _id: ObjectId("643d01c76c22d015e16ffe5b"),
+    name: 'Vaibhav',
+    age: 'c'
+  }
+]
+mydb> db.mycol.find({$and:[{'name':'krips'},{'age':18}]})
+[
+  { _id: ObjectId("643d01c76c22d015e16ffe5a"), name: 'krips', age: 18 }
+]
+mydb> db.mycol.find({$and:[{'name':'krips'},{'age':8}]})
+
+mydb> db.mycol.find().limit(1)
+[
+  {
+    _id: ObjectId("643d01546c22d015e16ffe59"),
+    name: 'skumar',
+    age: 34
+  }
+]
+mydb> db.mycol.find().limit(3)
+[
+  {
+    _id: ObjectId("643d01546c22d015e16ffe59"),
+    name: 'skumar',
+    age: 34
+  },
+  { _id: ObjectId("643d01c76c22d015e16ffe5a"), name: 'krips', age: 18 },
+  {
+    _id: ObjectId("643d01c76c22d015e16ffe5b"),
+    name: 'Vaibhav',
+    age: 'c'
+  }
+]
+mydb> db.mycol.find().limit(4)
+[
+  {
+    _id: ObjectId("643d01546c22d015e16ffe59"),
+    name: 'skumar',
+    age: 34
+  },
+  { _id: ObjectId("643d01c76c22d015e16ffe5a"), name: 'krips', age: 18 },
+  {
+    _id: ObjectId("643d01c76c22d015e16ffe5b"),
+    name: 'Vaibhav',
+    age: 'c'
+  }
+]
+mydb> db.mycol.find().limit(2)
+[
+  {
+    _id: ObjectId("643d01546c22d015e16ffe59"),
+    name: 'skumar',
+    age: 34
+  },
+  { _id: ObjectId("643d01c76c22d015e16ffe5a"), name: 'krips', age: 18 }
+]
+mydb> db.mycol.find().skip(1)
+[
+  { _id: ObjectId("643d01c76c22d015e16ffe5a"), name: 'krips', age: 18 },
+  {
+    _id: ObjectId("643d01c76c22d015e16ffe5b"),
+    name: 'Vaibhav',
+    age: 'c'
+  }
+]
+mydb> db.mycol.find().skip(0)
+[
+  {
+    _id: ObjectId("643d01546c22d015e16ffe59"),
+    name: 'skumar',
+    age: 34
+  },
+  { _id: ObjectId("643d01c76c22d015e16ffe5a"), name: 'krips', age: 18 },
+  {
+    _id: ObjectId("643d01c76c22d015e16ffe5b"),
+    name: 'Vaibhav',
+    age: 'c'
+  }
+]
+mydb> db.mycol.find().skip(2)
+[
+  {
+    _id: ObjectId("643d01c76c22d015e16ffe5b"),
+    name: 'Vaibhav',
+    age: 'c'
+  }
+]
+mydb> db.mycol.insert({'Animal':'dog','age':2})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("643d04446c22d015e16ffe5c") }
+}
+mydb> db.mycol.find().skip(2)
+[
+  {
+    _id: ObjectId("643d01c76c22d015e16ffe5b"),
+    name: 'Vaibhav',
+    age: 'c'
+  },
+  { _id: ObjectId("643d04446c22d015e16ffe5c"), Animal: 'dog', age: 2 }
+]
+mydb> db.mycol.find().skip(1)
+[
+  { _id: ObjectId("643d01c76c22d015e16ffe5a"), name: 'krips', age: 18 },
+  {
+    _id: ObjectId("643d01c76c22d015e16ffe5b"),
+    name: 'Vaibhav',
+    age: 'c'
+  },
+  { _id: ObjectId("643d04446c22d015e16ffe5c"), Animal: 'dog', age: 2 }
+]
+mydb> db.mycol.find().skip(2)
+[
+  {
+    _id: ObjectId("643d01c76c22d015e16ffe5b"),
+    name: 'Vaibhav',
+    age: 'c'
+  },
+  { _id: ObjectId("643d04446c22d015e16ffe5c"), Animal: 'dog', age: 2 }
+]
+mydb> db.mycol.find().skip(3)
+[
+  { _id: ObjectId("643d04446c22d015e16ffe5c"), Animal: 'dog', age: 2 }
+]
+mydb> db.mycol.find().skip(4)
+
+mydb> db.mycol.index({'myidx':1})
+TypeError: db.mycol.index is not a function
+mydb> db.mycol.createIndex({'myidx':1})
+myidx_1
+mydb> db.mycol.find()
+[
+  {
+    _id: ObjectId("643d01546c22d015e16ffe59"),
+    name: 'skumar',
+    age: 34
+  },
+  { _id: ObjectId("643d01c76c22d015e16ffe5a"), name: 'krips', age: 18 },
+  {
+    _id: ObjectId("643d01c76c22d015e16ffe5b"),
+    name: 'Vaibhav',
+    age: 'c'
+  },
+  { _id: ObjectId("643d04446c22d015e16ffe5c"), Animal: 'dog', age: 2 }
+]
+mydb> db.mycol.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { myidx: 1 }, name: 'myidx_1' }
+]
+mydb> db.mycol.aggregate({$group:{'age'})
+Uncaught:
+SyntaxError: Unexpected token (1:33)
+
+> 1 | db.mycol.aggregate({$group:{'age'})
+    |                                  ^
+  2 |
+
+mydb> db.mycol.aggregate({$group:{'age':2})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:36)
+
+> 1 | db.mycol.aggregate({$group:{'age':2})
+    |                                     ^
+  2 |
+
+mydb> db.mycol.aggregate({$group:{'age':2}})
+MongoServerError: The field 'age' must be an accumulator object
+mydb> db.mycol.aggregate({$match:{'age'{$gt:2}})
+Uncaught:
+SyntaxError: Unexpected token (1:33)
+
+> 1 | db.mycol.aggregate({$match:{'age'{$gt:2}})
+    |                                  ^
+  2 |
+
+mydb> db.mycol.aggregate({$match:{'age':{$gt:2}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:42)
+
+> 1 | db.mycol.aggregate({$match:{'age':{$gt:2}})
+    |                                           ^
+  2 |
+
+mydb> db.mycol.aggregate({$match:{'age':{$gt:2}}})
+[
+  {
+    _id: ObjectId("643d01546c22d015e16ffe59"),
+    name: 'skumar',
+    age: 34
+  },
+  { _id: ObjectId("643d01c76c22d015e16ffe5a"), name: 'krips', age: 18 }
+]
+mydb> db.mycol.aggregate({$count:{'age':{$gt:2}}})
+MongoServerError: the count field must be a non-empty string
+mydb> db.mycol.aggregate({$group:{'age':{$gt:2},'age':{$sum:'ageSum'}}})
+MongoServerError: a group specification must include an _id
+mydb> db.mycol.aggregate({$group:{'_id':'name','age':{$sum:'ageSum'}}})
+[ { _id: 'name', age: 0 } ]
+mydb> db.mycol.aggregate({$group:{'_id':'$name','$age':{$sum:'ageSum'}}})
+MongoServerError: The field name '$age' cannot be an operator name
+mydb> db.mycol.aggregate({$group:{'_id':'$name','age':{$sum:'$ageSum'}}})
+[
+  { _id: null, age: 0 },
+  { _id: 'skumar', age: 0 },
+  { _id: 'Vaibhav', age: 0 },
+  { _id: 'krips', age: 0 }
+]
+mydb>
